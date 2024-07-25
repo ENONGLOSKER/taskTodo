@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path
 from todo_app import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.task_list, name='task_list'),
@@ -25,3 +28,6 @@ urlpatterns = [
     path('task/<int:task_id>/', views.task_detail, name='task_detail'),
     path('todo/<int:todo_id>/change_status/', views.change_todo_status, name='change_todo_status'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
