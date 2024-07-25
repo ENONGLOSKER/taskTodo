@@ -3,7 +3,6 @@
     <h1>APPS TASK TODO</h1>
     <span>✨⭐⭐⭐✨</span>
     <hr>
-    kategori
     <img src="TASKTODO.png"/>
  
     <br>
