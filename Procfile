@@ -1,2 +1,2 @@
-web: gunicorn api_pemesanan_cafe.wsgi --log-file -
+web: gunicorn task_project.wsgi --log-file -
 
