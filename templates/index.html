@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK TODO</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .banner{
+            padding: 80px 80px 40px 80px;
+            background-image: linear-gradient(90deg, rgb(254, 178, 64), orange);
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            color: aliceblue;
+        }
+        .banner p{
+            font-size: 20px;
+        }
+        .banner h3{
+            font-size: 40px;
+        }
+        #task{
+            text-decoration: none;
+            background-color: black;
+            color: antiquewhite;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 5px 5px 50px rgb(235, 69, 47);
+        }
+        #task:hover{
+            text-decoration: none;
+            background-color: antiquewhite;
+            color: black;
+            box-shadow: 5px 5px 50px rgb(252, 42, 15);
+        }
+
+        .task-card{
+            margin: 50px 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card-item{
+            background-color: bisque;
+            width: 323px;
+            padding: 15px 20px;
+            border-radius: 22px;
+            line-height: 50px;
+        }
+
+        .card-item:nth-child(1){
+            transform: rotate(6deg);
+            background-color: rgb(41, 41, 41);
+            box-shadow: -6px 2px 30px rgb(247, 222, 161);
+            color: bisque;
+        }
+        .card-item:nth-child(1):hover{
+            background-color: rgb(252, 217, 174);
+            transform: rotate(0deg);
+            box-shadow: -6px 2px 30px rgb(219, 219, 219);
+            color: rgb(48, 48, 48);
+        }
+        .card-item h2{
+            font-size: 28px;
+            line-height: normal;
+        }
+        .card-item .item-time{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-item .item-time span:nth-child(2){
+            background-color: white;
+            line-height: normal;
+            padding: 8px 22px;
+            border-radius: 40px;
+            box-shadow: -6px 2px 30px rgb(247, 195, 65);
+            color: orange;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <div class="bnr-title">
+                <p>Hello👋 Elqusairi</p>
+                <h3>Selamat Datang!</h3>
+            </div>
+
+            <a href="" id="task">New Task</a>
+        </div>
+
+        <div class="task-card">
+            <div class="card-item">
+                <span>Priority</span>
+                <h2>Develop Back-End System</h2>
+
+                <div class="item-time">
+                    <span>09.00-10.00 AM</span>
+                    <span>Tags</span>
+                </div>
+            </div>
+            <div class="card-item">
+                <span>Priority</span>
+                <h2>Develop Back-End System</h2>
+
+                <div class="item-time">
+                    <span>09.00-10.00 AM</span>
+                    <span>Tags</span>
+                </div>
+            </div>
+            <div class="card-item">
+                <span>Priority</span>
+                <h2>Develop Back-End System</h2>
+
+                <div class="item-time">
+                    <span>09.00-10.00 AM</span>
+                    <span>Tags</span>
+                </div>
+            </div>
+            <div class="card-item">
+                <span>Priority</span>
+                <h2>Develop Back-End System</h2>
+
+                <div class="item-time">
+                    <span>09.00-10.00 AM</span>
+                    <span>Tags</span>
+                </div>
+            </div>
+            <div class="card-item">
+                <span>Priority</span>
+                <h2>Develop Back-End System</h2>
+
+                <div class="item-time">
+                    <span>09.00-10.00 AM</span>
+                    <span>Tags</span>
+                </div>
+            </div>
+            <div class="card-item">
+                <span>Priority</span>
+                <h2>Develop Back-End System</h2>
+
+                <div class="item-time">
+                    <span>09.00-10.00 AM</span>
+                    <span>Tags</span>
+                </div>
+            </div>
+            <div class="card-item">
+                <span>Priority</span>
+                <h2>Develop Back-End System</h2>
+
+                <div class="item-time">
+                    <span>09.00-10.00 AM</span>
+                    <span>Tags</span>
+                </div>
+            </div>
+            <div class="card-item">
+                <span>Priority</span>
+                <h2>Develop Back-End System</h2>
+
+                <div class="item-time">
+                    <span>09.00-10.00 AM</span>
+                    <span>Tags</span>
+                </div>
+            </div>
+            <div class="card-item">
+                <span>Priority</span>
+                <h2>Develop Back-End System</h2>
+
+                <div class="item-time">
+                    <span>09.00-10.00 AM</span>
+                    <span>Tags</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,339 @@
+{% load humanize %}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK TODO</title>
+    <style>
+        /* Gaya untuk Modal */
+    .modal {
+        display: none; /* Sembunyikan modal secara default */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 8px;
+    }
+
+    .close-btn {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    input[type="text"] {
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+        /* static/css/styles.css */
+            .card {
+                border: 1px solid #ddd;
+                margin: 10px 0;
+                padding: 15px;
+                border-radius: 5px;
+            }
+
+            .card-header {
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .card-body {
+                margin-left: 15px;
+            }
+
+            *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        /* .container{
+        } */
+        .banner{
+            padding: 80px 80px 40px 80px;
+            background-image: linear-gradient(90deg, rgb(254, 178, 64), orange);
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            color: aliceblue;
+        }
+        .banner a{
+            text-decoration: none;
+            color: white;
+        }
+        .banner p{
+            font-size: 20px;
+        }
+        .banner h3{
+            font-size: 40px;
+        }
+        #task{
+            text-decoration: none;
+            background-color: black;
+            color: antiquewhite;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 5px 5px 50px rgb(235, 69, 47);
+        }
+        #task:hover{
+            text-decoration: none;
+            background-color: antiquewhite;
+            color: black;
+            box-shadow: 5px 5px 50px rgb(252, 42, 15);
+        }
+
+        .task-card{
+            margin: 50px 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .task-card a{
+            text-decoration: none;
+        }
+        /* Gaya untuk semua card-item */
+        .card-item {
+            background-color: bisque;
+            color: rgb(41, 41, 41);
+            width: 323px;
+            height: 240px;
+            padding: 15px 20px;
+            border-radius: 22px;
+            line-height: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Gaya untuk card-item pertama */
+        .task-card a:nth-child(1) .card-item {
+            transform: rotate(6deg);
+            background-color: rgb(41, 41, 41);
+            box-shadow: -6px 2px 30px rgb(247, 222, 161);
+            color: bisque;
+        }
+
+        .task-card a:nth-child(1) .card-item:hover{
+            background-color: rgb(252, 217, 174);
+            transform: rotate(0deg);
+            box-shadow: -6px 2px 30px rgb(219, 219, 219);
+            color: rgb(48, 48, 48);
+        }
+        .card-item:hover{
+            background-color: orange;
+            transform: rotate(8deg);
+            box-shadow: -6px 2px 30px rgb(247, 222, 161);
+        }
+        .card-item h2{
+            font-size: 28px;
+            line-height: normal;
+            text-transform: capitalize;
+        }
+        .card-item .item-time{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-item .item-time span:nth-child(1){
+           text-transform: capitalize;
+           font-size: 13px;
+        }
+        .card-item .item-time span:nth-child(2){
+            background-color: white;
+            line-height: normal;
+            padding: 8px 22px;
+            border-radius: 40px;
+            box-shadow: 2px 2px 20px rgb(247, 195, 65);
+            color: orange;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+        :root {
+            --vs-primary: 29 92 255;
+        }
+
+        /*Dialog Styles*/
+        dialog {
+            margin: 50px auto;
+            padding: 1rem 3rem;
+            background: white;
+            width: 450px;
+            padding-top: 2rem;
+            border-radius: 20px;
+            border: 0;
+            box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
+            animation: fadeIn 1s ease both;
+            &::backdrop {
+                animation: fadeIn 1s ease both;
+                background: rgb(255 255 255 / 40%);
+                z-index: 2;
+                backdrop-filter: blur(20px);
+            }
+            .x {
+                filter: grayscale(1);
+                border: none;
+                background: none;
+                position: absolute;
+                top: 15px;
+                right: 10px;
+                transition: ease filter, transform 0.3s;
+                cursor: pointer;
+                transform-origin: center;
+                &:hover {
+                    filter: grayscale(0);
+                    transform: scale(1.1);
+                }
+            }
+            h2 {
+                font-weight: 600;
+                font-size: 2rem;
+                padding-bottom: 1rem;
+            }
+            p {
+                font-size: 1rem;
+                line-height: 1.3rem;
+                padding: 0.5rem 0;
+                a {
+                    &:visited {
+                        color: rgb(var(--vs-primary));
+                    }
+                }
+            }
+        }
+
+        button.primary {
+            display: inline-block;
+            text-decoration: none;
+            background-color: black;
+            color: antiquewhite;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 5px 5px 50px rgb(235, 69, 47);
+            transition: background-color 0.1s ease;
+            transition: all 0.25s ease;
+            
+            &:hover {
+                box-shadow: 0 20px 20px -10px rgb(var(--vs-primary) / 50%);
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <dialog id="dialog">
+            <h2>Form add tasks</h2>
+            <form method="post">
+                {% csrf_token %}
+                <label for="name">
+                    Name
+                    <input type="text" name="name" id="name" required>
+                </label>
+                <label for="priority">
+                    Priority
+                    <select name="priority" id="priority" required>
+                        <option value="Prioritas">Prioritas</option>
+                        <option value="Sedang">Sedang</option>
+                        <option value="Santai">Santai</option>
+                    </select>
+                </label>
+                <label for="tags">
+                    Tags
+                    <input type="text" name="tags" id="tags" required>
+                </label>
+                <button type="submit">Add Task</button>
+            </form>
+            <button onclick="window.dialog.close();" aria-label="close" class="x">❌</button>
+        </dialog>
+
+        <div class="banner">
+            <a href="{% url 'task_list' %}">
+                <div class="bnr-title">
+                    <p>Hello👋 Elqusairi</p>
+                    <h3>Selamat Datang!</h3>
+                </div>
+            </a>
+            <button class="primary" onclick="window.dialog.showModal();">New Task</button>
+        </div>
+
+        <div class="task-card">
+            {% for task in tasks %}
+                <a href="{% url 'task_detail' task.id %}">
+                    <div class="card-item">
+                        <span>{{ task.priority }}</span>
+                        <h2>{{ task.name }}</h2>
+                        <div class="item-time">
+                            <span>{{ task.created|custom_timesince_or_created }}</span>
+                            <span>{{ task.tags }}</span>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+    
+</body>
+</html>
