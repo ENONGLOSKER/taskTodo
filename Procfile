@@ -1,2 +1,2 @@
-web: gunicorn taskTodo.wsgi --log-file -
+web: gunicorn task_project.wsgi --log-file -
 
