@@ -11,9 +11,12 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
+        
+
         .banner{
             padding: 80px 80px 40px 80px;
-            background-image: linear-gradient(90deg, rgb(254, 178, 64), orange);
+            background-image: linear-gradient(90deg, rgb(126, 75, 0), orange);
             display: flex;
             justify-content: space-between;
             align-items: end;
@@ -87,6 +90,56 @@
             color: orange;
             font-weight: 500;
         }
+
+        /* Media query untuk layar dengan lebar maksimum 768px (tablet dan mobile) */
+        @media (max-width: 768px) {
+            .banner {
+                padding: 60px 4%;
+                background-color: red;
+            }
+
+            .banner h3 {
+                font-size: 32px;
+            }
+
+            #task {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .card-item {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        /* Media query untuk layar dengan lebar maksimum 480px (mobile) */
+        @media (max-width: 480px) {
+            .banner {
+                padding: 40px 3%;
+                background-color: yellow;
+            }
+
+            .banner h3 {
+                font-size: 28px;
+            }
+
+            #task {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+
+            .card-item {
+                width: 100%;
+                max-width: 260px;
+            }
+
+            .card-item h2 {
+                font-size: 20px;
+            }
+        }
+
+        
     </style>
 </head>
 <body>

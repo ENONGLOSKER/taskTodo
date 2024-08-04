@@ -103,6 +103,7 @@
             align-items: end;
             color: aliceblue;
         }
+
         .banner a{
             text-decoration: none;
             color: white;
@@ -111,7 +112,7 @@
             font-size: 20px;
         }
         .banner h3{
-            font-size: 40px;
+            font-size: 30px;
         }
         #task{
             text-decoration: none;
@@ -279,6 +280,39 @@
             }
         }
 
+
+        /* Media query untuk layar dengan lebar maksimum 768px (tablet dan mobile) */
+        /* @media (max-width: 768px) {
+            .banner {
+                padding: 60px 4%;
+                background-color: red;
+            }
+
+            .banner h3 {
+                font-size: 32px;
+            }
+
+            #task {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .card-item {
+                width: 100%;
+                max-width: 280px;
+            }
+        } */
+
+        /* Media query untuk layar dengan lebar maksimum 480px (mobile) */
+        @media (max-width: 480px) {
+            .banner {
+                padding: 40px 20px 40px 20px;
+                background-color: yellow;
+            }
+            button.primary {
+                padding: 10px 14px;
+            }
+        }
     </style>
 </head>
 <body>
