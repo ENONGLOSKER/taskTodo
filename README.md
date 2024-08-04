@@ -20,11 +20,11 @@ git clone https://github.com/ENONGLOSKER/taskTodo.git
 
 - 📁&nbsp;&nbsp;Masuk ke Folder
 ```bash
-cd task_project
+cd taskTodo
 ```
 - 📁&nbsp;&nbsp;Install requirements
 ```bash
-pip install -r requirement.txt
+pip install -r requirements.txt
 ```
 - 📁&nbsp;&nbsp;Run Server
 ```bash
@@ -35,4 +35,8 @@ python manage.py runserver
 - 📁&nbsp;&nbsp; Jika ada Update tinggal
 ```bash
 git pull origin master
+```
+- 📁&nbsp;&nbsp; membuat super user
+```bash
+py manage.py creataesuperuser
 ```
